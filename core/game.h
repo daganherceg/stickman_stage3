@@ -17,6 +17,7 @@ public:
 
 protected:
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event); // TODO Added
     void paintEvent(QPaintEvent *event);
 
 private:

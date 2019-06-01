@@ -32,11 +32,13 @@ INCLUDEPATH += objects/player
 INCLUDEPATH += objects/entities
 
 SOURCES += \
+    core/stage3dialog.cpp \
     objects/entities/colouredentity.cpp \
     objects/entities/entity.cpp \
     objects/entities/entitydecorator.cpp \
     objects/entities/entityfactory.cpp \
     objects/entities/flyingentity.cpp \
+    objects/player/freestickman.cpp \
     objects/player/jumpingstickman.cpp \
     objects/player/stickman.cpp \
     objects/background.cpp \
@@ -61,11 +63,13 @@ SOURCES += \
     core/stagefactory.cpp
 
 HEADERS += \
+    core/stage3dialog.h \
     objects/entities/colouredentity.h \
     objects/entities/entity.h \
     objects/entities/entitydecorator.h \
     objects/entities/entityfactory.h \
     objects/entities/flyingentity.h \
+    objects/player/freestickman.h \
     objects/player/jumpingstickman.h \
     objects/player/stickman.h \
     objects/background.h \

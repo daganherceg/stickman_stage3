@@ -19,3 +19,9 @@ void GameStageDecorator::render(Renderer &renderer) {
 void GameStageDecorator::input(QKeyEvent &event) {
     stage->input(event);
 }
+
+// TODO Added
+void GameStageDecorator::released(QKeyEvent &event) {
+    stage->released(event);
+}
+// END TODO

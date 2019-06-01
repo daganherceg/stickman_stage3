@@ -1,7 +1,7 @@
 #include "score.h"
 
 Score::Score():
-    hiscore(), currScore(1) {
+    hiscore(), currScore(0) {
     for (int i = 0; i < 10; i++) {
         std::string spritePath = ":sprites/" + std::to_string(i) + ".png";
         QPixmap sprite(QString::fromStdString(spritePath));

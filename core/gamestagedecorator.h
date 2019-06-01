@@ -12,6 +12,7 @@ public:
     virtual void update();
     virtual void render(Renderer &renderer);
     virtual void input(QKeyEvent &event);
+    virtual void released(QKeyEvent &event);
 
 private:
     std::unique_ptr<GameStage> stage;

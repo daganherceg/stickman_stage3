@@ -3,6 +3,8 @@
 #include "flyingentity.h"
 #include "collision.h"
 
+#include <iostream>
+
 Dialog::Dialog(Game &game, std::unique_ptr<Stickman> stickman, std::unique_ptr<EntityFactory> factory):
     game(game),
     stickman(std::move(stickman)),
@@ -45,15 +47,15 @@ void Dialog::update() {
     }
 
     background.update();
-    spawnObstacles(counter);
-    speedUp(counter);
+    spawnObstacles(unsigned(counter));
+    speedUp(unsigned(counter));
     score.increment();
 }
 
 void Dialog::render(Renderer &renderer) {
-    renderBackground(renderer, counter);
-    renderObstacles(renderer, counter);
-    stickman->render(renderer, counter);
+    renderBackground(renderer, unsigned(counter));
+    renderObstacles(renderer, unsigned(counter));
+    stickman->render(renderer, unsigned(counter));
     score.render(renderer);
     counter++;
 }
@@ -61,6 +63,7 @@ void Dialog::render(Renderer &renderer) {
 void Dialog::input(QKeyEvent &event) {
     stickman->handleInput(event);
 }
+
 
 // Draws ground and clouds and sets sky colour
 void Dialog::renderBackground(Renderer &renderer, unsigned int counter) {

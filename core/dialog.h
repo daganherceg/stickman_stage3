@@ -24,6 +24,7 @@ public:
     virtual void update();
     virtual void render(Renderer &renderer);
     virtual void input(QKeyEvent &event);
+    virtual void released(QKeyEvent &event){} // TODO Added
 
     void setStickman(std::unique_ptr<Stickman> stickman);
     void setBackground(Background background);

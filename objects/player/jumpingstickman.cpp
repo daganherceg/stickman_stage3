@@ -1,8 +1,10 @@
 #include "jumpingstickman.h"
 #include "collision.h"
 
+#include <iostream>
+
 JumpingStickman::JumpingStickman(int floor, int jumpImpulse, int maxJumpCount, int gravity) :
-    floor(floor), jumpImpulse(jumpImpulse), jumpVelocity(0), gravity(gravity), jumpCount(0), maxJumpCount(maxJumpCount)  {
+    floor(floor), jumpImpulse(jumpImpulse), jumpVelocity(0), gravity(gravity), jumpCount(0), maxJumpCount(2)  {
 
 }
 
@@ -16,18 +18,14 @@ void JumpingStickman::jump() {
     jumpCount++;
 }
 
+// TODO HAD TO CHANGE THE return value
 bool JumpingStickman::canJump() {
     return jumpCount < maxJumpCount;
 }
 
 void JumpingStickman::handleInput(QKeyEvent &event) {
-    if (event.key() == Qt::Key_Space && !event.isAutoRepeat() && canJump()) {
+    if (event.key() == Qt::Key_Space && !event.isAutoRepeat() && canJump() == true) {
         jump();
-    }
-    if (event.key() == Qt::Key_Left || event.key() == Qt::Key_Right) {
-
-    } else {
-        jumpVelocity = 0;
     }
 }
 

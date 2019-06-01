@@ -35,8 +35,6 @@ public:
 
 protected:
     bool colliding;
-
-private:
     Coordinate coordinate;
     std::string size;
     QPixmap sprite;

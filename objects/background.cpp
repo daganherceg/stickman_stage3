@@ -20,6 +20,8 @@ void Background::setSprite(std::string path) {
 // Draws background at current coordinate with copy appended to end of first
 // Then updates background location
 void Background::render(Renderer &renderer, unsigned int /*time*/) {
+    // TODO... APPEND background to the beginning
+
     int x = coordinate.getQtRenderingXCoordinate();
     renderer.draw(x % 1200, coordinate.getQtRenderingYCoordinate() - sprite.height(), sprite);
     renderer.draw(x % 1200 + 1200, coordinate.getQtRenderingYCoordinate() - sprite.height(), sprite);
