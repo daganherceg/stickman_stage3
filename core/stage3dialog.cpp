@@ -9,8 +9,11 @@ Stage3Dialog::Stage3Dialog(Game &game, std::unique_ptr<Stickman> stickman, std::
 {
 }
 
+/**
+ * @brief released listens for user input to end (specifically the left and right key being held)
+ * @param event
+ */
 void Stage3Dialog::released(QKeyEvent &event) {
-    // TODO clean this up. This functionality dosnt all need be here
     if (event.key() == Qt::Key_Right || event.key() == Qt::Key_Left) {
         background.setVelocity(0);
         for (auto const& obs : obstacles) {
@@ -28,6 +31,10 @@ void Stage3Dialog::input(QKeyEvent &event) {
     stickman->handleInput(event);
 }
 
+/**
+ * @brief handleMovement is the place where all user related movement is encapsulated
+ * @param event
+ */
 void Stage3Dialog::handleMovement(QKeyEvent &event) {
     // Move @ player velocity + obstacle velocity
     if (event.key() == Qt::Key_Right) {
@@ -38,12 +45,12 @@ void Stage3Dialog::handleMovement(QKeyEvent &event) {
 
     int x = stickman->getCoordinate().getXCoordinate();
 
-    // Pushed to left side of the screen
+    // User is to left side of the screen
     if (x <= 0) {
         leftBoundaryCollision();
     }
 
-    // Reached end of screen
+    // User reaches end of screen
     if (x >= game.width()) {
         rightBoundaryCollision();
     }
@@ -62,17 +69,14 @@ void Stage3Dialog::update() {
         distanceToSpawn -= constantVelocity;
         background.update();
         if (counter % 20 == 0) score.increment();
-//        speedUp(unsigned(counter));
     }
 
+    // Halve the current obstacles for the (half for level 1, the rest for level 2)
     int levelSize = int(obstacleLayout.size())/maxLevel;
 
     if (nextObstacle < currentLevel * levelSize ) {
         spawnObstacles(unsigned(counter));
     }
-
-
-//    std::cout << levelSize << " " << maxLevel << std::endl;
 
     if (nextObstacle >= currentLevel*levelSize && int(obstacles.size()) == 0) {
         levelComplete = true;
@@ -186,6 +190,11 @@ void Stage3Dialog::moveLeft() {
 }
 
 void Stage3Dialog::rightBoundaryCollision() {
+    // user is given 1,000,000 points for reaching the end of the screen
+    int i = 0;
+    while (i < 1000000) {
+        score.increment();
+    }
     levelComplete = true;
 }
 
@@ -221,20 +230,22 @@ void Stage3Dialog::nextLevel() {
 
 void Stage3Dialog::resetLevel() {
     std::cout << "\nRestarting Level " << currentLevel << std::endl;
+
     nextObstacle = (currentLevel-1) * int(obstacleLayout.size())/2;
+
 
     // revert score back to what it was at the beginning of level
     score.setScore(savedScore);
 
     // delete all obstacles
     removeObstacles();
+
     stickman->getCoordinate().setXCoordinate(400);
 }
 
 void Stage3Dialog::removeObstacles() {
     for (auto &obs : obstacles) {
         obs->setVelocity(1000);
-        update();
     }
 }
 

@@ -1,7 +1,11 @@
+
+
 ---- MARKING RUBRIC ----
 
 .5 - Compiles & Runs
 - Yeahhh boi
+- https://youtu.be/M6ieVxb11Ms
+- Video attatched to project
 
 Behavioural Design Pattern
 Planned on useing the following... However, I ran out of time.
@@ -25,7 +29,8 @@ Planned on useing the following... However, I ran out of time.
 1.0 - Scoring system
 - score increments at a slower rate
 - +100 points when object is 'killed' from above
-- +1000 multiplied by current level when level is completed
+- +1,000 multiplied by current level when level is completed
+- +1,000,000 for reaching the end of the screen before enemies have all run out
 
 1.0 - Preservation of previous functionality
 - *takes glasses off* YEAHHHHHHHHHHH
@@ -70,3 +75,10 @@ Planned on useing the following... However, I ran out of time.
 - Stage 1 code preserved (ie different types obstacles for level 1 & for level 2)
 - Unlimited levels
 --> Speed increases with each levels
+
+
+Notes & conclusion
+- Still quite a bit of classes which are highly coupled
+- Wrote functional code as the first goal with the idea of refactoring later
+- Refactoring turned out to be very hard and it would have been better to either design the code with the design patterns in mind or to regurlarly refactor code
+- Waiting to do it all at the end proved to be too much
