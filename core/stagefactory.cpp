@@ -10,6 +10,11 @@
 #include "moon.h"
 #include "background.h"
 #include "freestickman.h"
+#include "stage3collisiontest.h"
+#include "killobstacletest.h"
+#include "changemodetest.h"
+#include "walkthroughenemiestest.h"
+#include "livestest.h"
 
 #include <iostream>
 
@@ -22,10 +27,17 @@ std::unique_ptr<GameStage> StageFactory::createStage() {
         if (config.testMode) {
             // Stage 2 test mode
             std::vector<std::unique_ptr<TestRunner>> tests;
-            tests.push_back(std::make_unique<CollisionTest>());
-            tests.push_back(std::make_unique<JumpTest>());
-            tests.push_back(std::make_unique<FlyingObstacleTest>());
-
+            if (config.stage == 2) {
+                tests.push_back(std::make_unique<CollisionTest>());
+                tests.push_back(std::make_unique<JumpTest>());
+                tests.push_back(std::make_unique<FlyingObstacleTest>());
+            } else if (config.stage == 3) {
+                tests.push_back(std::make_unique<LivesTest>());
+                tests.push_back(std::make_unique<Stage3CollisionTest>());
+                tests.push_back(std::make_unique<KillObstacleTest>());
+                tests.push_back(std::make_unique<ChangeModeTest>());
+                tests.push_back(std::make_unique<WalkThroughEnemiesTest>());
+            }
             std::unique_ptr<GameStage> tester = std::make_unique<TestingDialog>(std::move(tests));
             return std::make_unique<SwapRendererStage>(std::move(tester));
        // TODO clean the below up

@@ -1,15 +1,11 @@
----- A few updates to the code ----
-
-Collisions
-- Move back when colliding
-- Move to next level when colliding with right wall
-
 ---- MARKING RUBRIC ----
 
 .5 - Compiles & Runs
 - Yeahhh boi
 
 Behavioural Design Pattern
+- State: handle game state & player state (using switch statemets, too much coupling)
+- Memento: save and restore levels from checkpoints
 
 1.0 - Code Quality
 
@@ -40,21 +36,26 @@ Behavioural Design Pattern
 
 Memory efficient design
 
-Powerups
+0.75 - Powerups
 - Get a powerup by 'killing' an enemy
 - Toggle through each size mode
 - This is designed to be used as a strategy as different modes will have different powers
--- Giant cannot jump but is indestructable: as a result scoring is slower
--- Large has an extra jump
--- Tiny is smaller and can fit in smaller spaces
--- Normal (well thats just normal)
+-- Giant cannot jump but is indestructable: as a result scoring is slower, still gets pushed back each time
+--> Large has an extra jump
+--> Tiny is smaller and can fit in smaller spaces
+--> Normal (well thats just normal)
 
-Sensible Testing Framework
--
+1.75 - Sensible Testing Framework
+- stage 3 collision testing
+- giant walking through enemies
+- kill obstacles by jumping on them
+- changing modes / sizes
+- checking set and getters for number of lives work
 
 Extensions
-- Win/lose logic (not in marking rubric)
-- Win / lose space (ie pushed back by enemies or push them back)
+- Gain / lose space (ie pushed back by enemies or push them back)
+-- fed into game mechanic (can lose by getting pushed back to far or win early by reaching the end, stickman can pass level before all obstacles are complete by reaching the end)
+- Stage 1 code preserved (ie different types obstacles for level 1 & for level 2)
 
 
 Total so far (7.25)

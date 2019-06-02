@@ -244,7 +244,7 @@ void Stage3Dialog::lose() {
     QCoreApplication::quit();
 }
 
-void Stage3Dialog::reward(std::unique_ptr<Entity> obstacle) {
+void Stage3Dialog::reward(std::unique_ptr<Entity> obstacle, Score score) {
 
         // Toggle mode
         std::vector<std::string> modes = {"tiny","normal","large","giant"};

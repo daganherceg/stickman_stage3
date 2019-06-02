@@ -33,6 +33,11 @@ INCLUDEPATH += objects/entities
 
 SOURCES += \
     core/stage3dialog.cpp \
+    core/testing/testcases/changemodetest.cpp \
+    core/testing/testcases/killobstacletest.cpp \
+    core/testing/testcases/livestest.cpp \
+    core/testing/testcases/stage3collisiontest.cpp \
+    core/testing/testcases/walkthroughenemiestest.cpp \
     objects/entities/colouredentity.cpp \
     objects/entities/entity.cpp \
     objects/entities/entitydecorator.cpp \
@@ -64,6 +69,11 @@ SOURCES += \
 
 HEADERS += \
     core/stage3dialog.h \
+    core/testing/testcases/changemodetest.h \
+    core/testing/testcases/killobstacletest.h \
+    core/testing/testcases/livestest.h \
+    core/testing/testcases/stage3collisiontest.h \
+    core/testing/testcases/walkthroughenemiestest.h \
     objects/entities/colouredentity.h \
     objects/entities/entity.h \
     objects/entities/entitydecorator.h \
