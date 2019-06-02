@@ -4,10 +4,15 @@
 - Yeahhh boi
 
 Behavioural Design Pattern
-- State: handle game state & player state (using switch statemets, too much coupling)
-- Memento: save and restore levels from checkpoints
+Planned on useing the following... However, I ran out of time.
+- Maybe some points for extending existing design patters? :P
+- Strategy: handle game state & player state (using switch statemets, too much coupling)
+- Memento: save and restore levels from checkpoints at the moment this is all pretty heavily couplesd
+
 
 1.0 - Code Quality
+- Meaningful usernames used
+- Separated functions into helper functions in order to reduce complexity of each function
 
 1.0 - Configurable # of lives
 - Lives configureable in config file
@@ -15,27 +20,31 @@ Behavioural Design Pattern
 1.0 - Level Restarts on loss of life
 - Enemies restart
 - Player returns to starting x coordinate
+- Score reduces to the score at the beginning of the level
 
 1.0 - Scoring system
 - score increments at a slower rate
 - +100 points when object is 'killed' from above
 - +1000 multiplied by current level when level is completed
 
-
 1.0 - Preservation of previous functionality
 - *takes glasses off* YEAHHHHHHHHHHH
 
 0.75 - User controls stickman (0.75)
-- Done & done
+- Enemies, background and stickment travel at different rates
+- User moves left and right
+- Rate of enemies adjust to account for speed of user
 
 1.0 - Multiple Levels
+- Unlimited levels
 - 2 Levels at the moment. Half obstacles specified are stage 1, other half are stage 2
+- Easily extendable for multiple levels
 - Level1: Cacti moves at same speed as background
 - Level2+: Birds with configurable velocity
 - Game speeds up with each level but user stays the same
 
-Memory efficient design
-- yeah boi! No memory is direcly created or deleted throughout the code.
+1.0 - Memory efficient design
+- yeah boi! No memory is direcly created or deleted throughout the new code
 - all forced deletions are designed to be triggered by existing render functions
 
 0.75 - Powerups
@@ -55,12 +64,9 @@ Memory efficient design
 - changing modes / sizes
 - checking set and getters for number of lives work
 
-Extensions
+~1.0 Extensions
 - Gain / lose space (ie pushed back by enemies or push them back)
--- fed into game mechanic (can lose by getting pushed back to far or win early by reaching the end, stickman can pass level before all obstacles are complete by reaching the end)
+--> fed into game mechanic (can lose by getting pushed back to far or win early by reaching the end, stickman can pass level before all obstacles are complete by reaching the end)
 - Stage 1 code preserved (ie different types obstacles for level 1 & for level 2)
-
-
-Total so far (7.25)
-
-
+- Unlimited levels
+--> Speed increases with each levels

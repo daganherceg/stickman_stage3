@@ -5,7 +5,7 @@
 #include <iostream>
 
 Stage3Dialog::Stage3Dialog(Game &game, std::unique_ptr<Stickman> stickman, std::unique_ptr<EntityFactory> factory, std::vector<std::pair<std::unique_ptr<Entity>, int>> obstacleLayout) :
-    Stage2Dialog(game, std::move(stickman), std::move(factory), std::move(obstacleLayout)), constantVelocity(2), currentLevel(1), maxLevel(2), levelComplete(false), playerVelocity(4), obstacleVelocity(3), savedScore(0)
+    Stage2Dialog(game, std::move(stickman), std::move(factory), std::move(obstacleLayout)), constantVelocity(2), currentLevel(1), maxLevel(4), levelComplete(false), playerVelocity(4), obstacleVelocity(3), savedScore(0)
 {
 }
 
@@ -62,13 +62,17 @@ void Stage3Dialog::update() {
         distanceToSpawn -= constantVelocity;
         background.update();
         if (counter % 20 == 0) score.increment();
-        speedUp(unsigned(counter));
-    }
-    if (nextObstacle + 1 < int(obstacleLayout.size())) {
-        spawnObstacles(unsigned(counter));
+//        speedUp(unsigned(counter));
     }
 
     int levelSize = int(obstacleLayout.size())/maxLevel;
+
+    if (nextObstacle < currentLevel * levelSize ) {
+        spawnObstacles(unsigned(counter));
+    }
+
+
+//    std::cout << levelSize << " " << maxLevel << std::endl;
 
     if (nextObstacle >= currentLevel*levelSize && int(obstacles.size()) == 0) {
         levelComplete = true;
@@ -199,6 +203,10 @@ void Stage3Dialog::leftBoundaryCollision() {
 void Stage3Dialog::nextLevel() {
     // Save score incase level is to be revisited
     savedScore = score.getScore();
+    if (currentLevel > 2) {
+        nextObstacle = 0;
+        speedUp(counter);
+    }
     std::cout << "Starting Level" << currentLevel + 1 << std::endl;
     levelComplete = false;
 
@@ -207,12 +215,13 @@ void Stage3Dialog::nextLevel() {
         score.increment();
         i++;
     }
+
     currentLevel++;
 }
 
 void Stage3Dialog::resetLevel() {
     std::cout << "\nRestarting Level " << currentLevel << std::endl;
-    nextObstacle = (currentLevel-1) * int(obstacleLayout.size())/maxLevel;
+    nextObstacle = (currentLevel-1) * int(obstacleLayout.size())/2;
 
     // revert score back to what it was at the beginning of level
     score.setScore(savedScore);
@@ -230,7 +239,9 @@ void Stage3Dialog::removeObstacles() {
 }
 
 void Stage3Dialog::speedUp(unsigned int counter) {
-
+    for (auto &o : obstacles) {
+        o->setVelocity(o->getVelocity() + 3);
+    }
 }
 
 void Stage3Dialog::win() {
