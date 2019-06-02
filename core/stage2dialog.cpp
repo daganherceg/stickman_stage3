@@ -11,7 +11,7 @@ void Stage2Dialog::spawnObstacles(unsigned int /*counter*/) {
     // Check if it's time to spawn an obstacle
     if (obstacleLayout.size() == 0 || distanceToSpawn > 0) return;
 
-    auto &e = obstacleLayout[nextObstacle];
+    auto &e = obstacleLayout[unsigned(nextObstacle)];
 
     // Check for collisions between next obstacle and current obstacles
     bool isOverlapping = false;
@@ -40,10 +40,10 @@ void Stage2Dialog::update() {
         // Reduce distance to next obstacle
         distanceToSpawn -= background.getVelocity();
         background.update();
-        speedUp(counter);
+        speedUp(unsigned(counter));
         score.increment();
     }
-    spawnObstacles(counter);
+    spawnObstacles(unsigned(counter));
 
     for (auto &c : clouds) {
         c->collisionLogic(*stickman);

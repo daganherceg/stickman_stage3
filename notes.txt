@@ -1,0 +1,62 @@
+---- A few updates to the code ----
+
+Collisions
+- Move back when colliding
+- Move to next level when colliding with right wall
+
+---- MARKING RUBRIC ----
+
+.5 - Compiles & Runs
+- Yeahhh boi
+
+Behavioural Design Pattern
+
+1.0 - Code Quality
+
+1.0 - Configurable # of lives
+- Lives configureable in config file
+
+1.0 - Level Restarts on loss of life
+- Enemies restart
+- Player returns to starting x coordinate
+
+1.0 - Scoring system
+- score increments at a slower rate
+- +100 points when object is 'killed' from above
+- +1000 multiplied by current level when level is completed
+
+
+1.0 - Preservation of previous functionality
+- *takes glasses off* YEAHHHHHHHHHHH
+
+0.75 - User controls stickman (0.75)
+- Done & done
+
+1.0 - Multiple Levels
+- 2 Levels at the moment. Half obstacles specified are stage 1, other half are stage 2
+- Level1: Cacti moves at same speed as background
+- Level2+: Birds with configurable velocity
+- Game speeds up with each level but user stays the same
+
+Memory efficient design
+
+Powerups
+- Get a powerup by 'killing' an enemy
+- Toggle through each size mode
+- This is designed to be used as a strategy as different modes will have different powers
+-- Giant cannot jump but is indestructable: as a result scoring is slower
+-- Large has an extra jump
+-- Tiny is smaller and can fit in smaller spaces
+-- Normal (well thats just normal)
+
+Sensible Testing Framework
+-
+
+Extensions
+- Win/lose logic (not in marking rubric)
+- Win / lose space (ie pushed back by enemies or push them back)
+
+
+Total so far (7.25)
+
+

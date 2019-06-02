@@ -28,11 +28,9 @@ void Game::keyPressEvent(QKeyEvent *event) {
     }
 }
 
-// TODO added
 void Game::keyReleaseEvent(QKeyEvent *event) {
    stage->released(*event);
 }
-// END TODO
 
 void Game::nextFrame() {
     update();

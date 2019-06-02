@@ -56,3 +56,13 @@ int Stickman::height() {
 Coordinate &Stickman::getCoordinate() {
     return coordinate;
 }
+
+# include <iostream>
+void Stickman::setMode(std::string mode) {
+    std::cout << "Overriding mode" << std::endl;
+    this->mode = mode;
+}
+
+std::string Stickman::getMode() {
+    return mode;
+}

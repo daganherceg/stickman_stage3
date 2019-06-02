@@ -2,6 +2,10 @@
 #define STAGE3DIALOG_H
 
 #include "stage2dialog.h"
+#include "freestickman.h"
+
+#include <QCoreApplication>
+
 
 class Stage3Dialog : public Stage2Dialog
 {
@@ -14,15 +18,34 @@ protected:
 
     void handleMovement(QKeyEvent &event);
     void update();
+    void speedUp(unsigned int counter);
 
     void render(Renderer &renderer);
     void renderObstacles(Renderer &renderer, unsigned int counter);
+    void spawnObstacles(unsigned int counter);
 
-    // TODO Overwrite the speedup function
+
+
 private:
+    // HELPER Functions
+    void moveRight();
+    void moveLeft();
+    void leftBoundaryCollision();
+    void rightBoundaryCollision();
+    void nextLevel();
+    void win();
+    void lose();
+    void resetLevel();
+    void removeObstacles();
+    void reward(std::unique_ptr<Entity> obstacle);
+
+
     int constantVelocity;
     int currentLevel;
-    bool levelComplete;
     int maxLevel;
+    bool levelComplete;
+    int playerVelocity;
+    int obstacleVelocity;
+    unsigned int savedScore;
 };
 #endif // STAGE3DIALOG_H

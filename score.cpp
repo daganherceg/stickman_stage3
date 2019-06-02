@@ -28,3 +28,12 @@ void Score::render(Renderer &renderer) {
         number.pop();
     }
 }
+
+// TODO Added the following
+unsigned int Score::getScore() {
+    return currScore;
+}
+
+void Score::setScore(unsigned int score) {
+    currScore = score;
+}

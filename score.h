@@ -14,6 +14,10 @@ public:
     void increment();
     void render(Renderer &renderer);
 
+    // TODO added the following
+    unsigned int getScore();
+    void setScore(unsigned int score);
+
 private:
     unsigned int hiscore;
     unsigned int currScore;

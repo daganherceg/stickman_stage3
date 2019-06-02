@@ -22,6 +22,8 @@ public:
 
     void handleInput(QKeyEvent &event);
     void update(std::vector<std::unique_ptr<Entity>> &obstacles);
+//    virtual int getNumLives() = 0;
+//    virtual void setNumLives(int lives) = 0;
 
 protected: // TODO was private
     int floor;
