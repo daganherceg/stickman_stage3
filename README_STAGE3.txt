@@ -35,12 +35,15 @@ Behavioural Design Pattern
 - Game speeds up with each level but user stays the same
 
 Memory efficient design
+- yeah boi! No memory is direcly created or deleted throughout the code.
+- all forced deletions are designed to be triggered by existing render functions
 
 0.75 - Powerups
 - Get a powerup by 'killing' an enemy
 - Toggle through each size mode
 - This is designed to be used as a strategy as different modes will have different powers
--- Giant cannot jump but is indestructable: as a result scoring is slower, still gets pushed back each time
+--> Giant cannot jump but is indestructable: as a result scoring is slower, still gets pushed back each time
+--> As Giant cannot jump, Giant cannot willingly change mode, 1 in 4 chance of chaning modes when killing enemies
 --> Large has an extra jump
 --> Tiny is smaller and can fit in smaller spaces
 --> Normal (well thats just normal)

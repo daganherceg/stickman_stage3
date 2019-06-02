@@ -69,7 +69,8 @@ void Stage3Dialog::update() {
     }
 
     int levelSize = int(obstacleLayout.size())/maxLevel;
-    if (nextObstacle + 1 >= currentLevel*levelSize && int(obstacles.size()) == 0) {
+
+    if (nextObstacle >= currentLevel*levelSize && int(obstacles.size()) == 0) {
         levelComplete = true;
     }
 
@@ -85,7 +86,6 @@ void Stage3Dialog::update() {
 void Stage3Dialog::render(Renderer &renderer) {
     if (counter == 0) background.setVelocity(0);
 
-    // TODO Overwritten
     renderBackground(renderer, unsigned(counter));
     renderObstacles(renderer, unsigned(counter));
 
@@ -200,7 +200,6 @@ void Stage3Dialog::nextLevel() {
     // Save score incase level is to be revisited
     savedScore = score.getScore();
     std::cout << "Starting Level" << currentLevel + 1 << std::endl;
-    nextObstacle = 0;
     levelComplete = false;
 
     int i = 0;
@@ -244,7 +243,7 @@ void Stage3Dialog::lose() {
     QCoreApplication::quit();
 }
 
-void Stage3Dialog::reward(std::unique_ptr<Entity> obstacle, Score score) {
+void Stage3Dialog::reward(std::unique_ptr<Entity> obstacle) {
 
         // Toggle mode
         std::vector<std::string> modes = {"tiny","normal","large","giant"};
@@ -254,7 +253,8 @@ void Stage3Dialog::reward(std::unique_ptr<Entity> obstacle, Score score) {
 
         // Change size
 
-        if (stickman->getMode() != "giant") stickman->setMode(modes[(mode + 1) % 4 ]);
+        std::string mode_str = stickman->getMode();
+        if ((mode_str == "giant" && rand() % 4 == 0) || mode_str != "giant") stickman->setMode(modes[(mode + 1) % 4 ]);
 
         int i = 0;
         while (i < 100) {

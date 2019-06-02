@@ -22,7 +22,7 @@ public:
     void lose();
     void resetLevel();
     void removeObstacles();
-    void reward(std::unique_ptr<Entity> obstacle, Score score);
+    void reward(std::unique_ptr<Entity> obstacle);
 
 
     int constantVelocity;
